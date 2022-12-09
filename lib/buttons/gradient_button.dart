@@ -17,8 +17,9 @@ class MyGradientButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final styleButton = ButtonStyle(
-      foregroundColor: MaterialStateProperty.all(Colors.white),
-    );
+        foregroundColor: MaterialStateProperty.all(Colors.white),
+        overlayColor:
+            MaterialStateProperty.all(const Color.fromARGB(208, 254, 195, 0)));
 
     return Container(
       height: 40,
