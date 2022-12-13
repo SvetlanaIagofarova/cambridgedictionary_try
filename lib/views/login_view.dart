@@ -29,23 +29,9 @@ class _LoginViewState extends State<LoginView> {
               child: Column(
                 children: [
                   const HeaderWidget(),
-                  SizedBox(height: 16.h),
-                  const LoginFields(),
-                  SizedBox(height: 3.5.h),
+                  SizedBox(height: 14.5.h),
                   const SocialNetworkAuth(),
-                  SizedBox(height: 1.5.h),
-                  MyGradientButton(
-                    onPressed: () {},
-                    gradient: const LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        Color.fromRGBO(29, 42, 87, 1),
-                        Color.fromRGBO(29, 42, 87, 1),
-                      ],
-                    ),
-                    child: const Text('Log in'),
-                  ),
+                  const LoginFields(),
                 ],
               ),
             ),
@@ -63,7 +49,6 @@ class HeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 3.h),
         Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 16.0,
@@ -107,6 +92,37 @@ class HeaderWidget extends StatelessWidget {
   }
 }
 
+class SocialNetworkAuth extends StatelessWidget {
+  const SocialNetworkAuth({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset('assets/svg/facebook_label.svg'),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset('assets/svg/google_label.svg'),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset('assets/svg/apple_label.svg'),
+            ),
+          ],
+        ),
+        SizedBox(height: 1.h),
+        const Text('OR')
+      ],
+    );
+  }
+}
+
 class LoginFields extends StatefulWidget {
   const LoginFields({super.key});
 
@@ -117,6 +133,7 @@ class LoginFields extends StatefulWidget {
 class _LoginFieldsState extends State<LoginFields> {
   late final TextEditingController _email;
   late final TextEditingController _password;
+  String? errorText;
 
   @override
   void initState() {
@@ -132,12 +149,40 @@ class _LoginFieldsState extends State<LoginFields> {
     super.dispose();
   }
 
+  void _auth() {
+    final email = _email.text;
+    final password = _password.text;
+
+    if (email == 'foo' && password == 'foo') {
+      errorText = null;
+      print('open app');
+    } else {
+      errorText = 'Wrong credentials';
+    }
+    setState(() {});
+  }
+
+  void _forgotPassword() {
+    print('forgot password');
+  }
+
   @override
   Widget build(BuildContext context) {
+    final errorText = this.errorText;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
+        if (errorText != null) ...[
+          Text(
+            errorText,
+            style: TextStyle(
+              color: Colors.red,
+              fontSize: 2.h,
+              fontWeight: FontWeight.w700,
+            ),
+          )
+        ],
         TextField(
           controller: _email,
           style: const TextStyle(fontWeight: FontWeight.bold),
@@ -174,36 +219,28 @@ class _LoginFieldsState extends State<LoginFields> {
             ),
           ),
         ),
-      ],
-    );
-  }
-}
-
-class SocialNetworkAuth extends StatelessWidget {
-  const SocialNetworkAuth({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Text('OR'),
+        TextButton(
+          onPressed: _forgotPassword,
+          child: const Text(
+            'Forgot password?',
+            style: TextStyle(
+              fontWeight: FontWeight.w300,
+              color: Color.fromRGBO(29, 42, 87, 1),
+            ),
+          ),
+        ),
         SizedBox(height: 1.5.h),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset('assets/svg/facebook_label.svg'),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset('assets/svg/google_label.svg'),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset('assets/svg/apple_label.svg'),
-            ),
-          ],
+        MyGradientButton(
+          onPressed: _auth,
+          gradient: const LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: [
+              Color.fromRGBO(29, 42, 87, 1),
+              Color.fromRGBO(29, 42, 87, 1),
+            ],
+          ),
+          child: const Text('Log in'),
         ),
       ],
     );
