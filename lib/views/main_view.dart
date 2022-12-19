@@ -10,21 +10,51 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   int _selectedTab = 0;
+  String _title = '';
 
   void onSelectTab(int index) {
     if (_selectedTab == index) return;
     setState(() {
       _selectedTab = index;
+      switch (index) {
+        case 0:
+          _title = 'Search';
+          break;
+        case 1:
+          _title = 'Thesaurus';
+          break;
+        case 2:
+          _title = 'Grammar';
+          break;
+      }
     });
   }
+
+  final List<Widget> _widgetOptions = const [
+    Text(
+      'Dictionary',
+    ),
+    Text(
+      'Thesaurus',
+    ),
+    Text(
+      'Grammar',
+    ),
+  ];
+
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.mainAmber,
+      key: _scaffoldKey,
       appBar: AppBar(
-        title: const Text('Search'),
+        title: Text(_title),
       ),
+      backgroundColor: AppColors.mainAmber,
+      body: _widgetOptions[_selectedTab],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTab,
         items: const [
@@ -41,9 +71,6 @@ class _MainViewState extends State<MainView> {
             label: 'Grammar',
           ),
           // BottomNavigationBarItem(
-          //   icon: Icon(Icons.person),
-          //   label: 'Profile',
-          // ),
         ],
         onTap: onSelectTab,
       ),

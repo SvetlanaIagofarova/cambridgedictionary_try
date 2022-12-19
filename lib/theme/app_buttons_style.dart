@@ -1,3 +1,4 @@
+import 'package:cambridgedictionary_try/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class MyGradientButton extends StatelessWidget {
@@ -18,8 +19,9 @@ class MyGradientButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final styleButton = ButtonStyle(
         foregroundColor: MaterialStateProperty.all(Colors.white),
-        overlayColor:
-            MaterialStateProperty.all(const Color.fromARGB(208, 254, 195, 0)));
+        overlayColor: MaterialStateProperty.all(
+          AppColors.mainAmber,
+        ));
 
     return Container(
       height: 40,
