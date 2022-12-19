@@ -1,5 +1,6 @@
+import 'package:cambridgedictionary_try/theme/app_colors.dart';
 import 'package:cambridgedictionary_try/views/login_view.dart';
-import 'package:cambridgedictionary_try/views/login_or_register_page.dart';
+import 'package:cambridgedictionary_try/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -18,11 +19,20 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: ThemeData(
             appBarTheme: const AppBarTheme(
-              backgroundColor: Color.fromRGBO(29, 42, 87, 1),
+              backgroundColor: AppColors.mainDarkBlue,
+            ),
+            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+              backgroundColor: AppColors.mainDarkBlue,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.blueGrey,
             ),
           ),
           debugShowCheckedModeBanner: false,
-          home: const LoginView(),
+          routes: {
+            '/login_view': (context) => const LoginView(),
+            '/main_view': (context) => const MainView(),
+          },
+          initialRoute: '/main_view',
         );
       },
     );

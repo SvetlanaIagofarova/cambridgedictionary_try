@@ -1,6 +1,7 @@
-import 'package:cambridgedictionary_try/buttons/gradient_button.dart';
+import 'package:cambridgedictionary_try/const/svg.dart';
+import 'package:cambridgedictionary_try/theme/app_buttons_style.dart';
+import 'package:cambridgedictionary_try/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
 class LoginView extends StatefulWidget {
@@ -17,7 +18,7 @@ class _LoginViewState extends State<LoginView> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: SafeArea(
         child: Scaffold(
-          backgroundColor: const Color.fromRGBO(254, 196, 0, 5),
+          backgroundColor: AppColors.mainAmber,
           appBar: AppBar(
             title: const Text('Login to your account'),
           ),
@@ -29,7 +30,7 @@ class _LoginViewState extends State<LoginView> {
               child: Column(
                 children: [
                   const HeaderWidget(),
-                  SizedBox(height: 14.5.h),
+                  SizedBox(height: 13.5.h),
                   const SocialNetworkAuth(),
                   const LoginFields(),
                 ],
@@ -56,8 +57,8 @@ class HeaderWidget extends StatelessWidget {
           child: Text(
             'Create your own space in the Cambridge dictionary',
             style: TextStyle(
-              fontSize: 4.h,
-              color: const Color.fromRGBO(29, 42, 87, 1),
+              fontSize: 4.5.h,
+              color: AppColors.mainDarkBlue,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -69,8 +70,8 @@ class HeaderWidget extends StatelessWidget {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: [
-              Color.fromRGBO(29, 42, 87, 1),
-              Color.fromRGBO(254, 196, 0, 5),
+              AppColors.mainDarkBlue,
+              AppColors.mainAmber,
             ],
           ),
           child: Row(
@@ -81,7 +82,7 @@ class HeaderWidget extends StatelessWidget {
                 " Sign up!",
                 style: TextStyle(
                   fontWeight: FontWeight.w800,
-                  color: Color.fromRGBO(29, 42, 87, 1),
+                  color: AppColors.mainDarkBlue,
                 ),
               ),
             ],
@@ -104,15 +105,15 @@ class SocialNetworkAuth extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {},
-              icon: SvgPicture.asset('assets/svg/facebook_label.svg'),
+              icon: AppSvgIcons.facebookLabel,
             ),
             IconButton(
               onPressed: () {},
-              icon: SvgPicture.asset('assets/svg/google_label.svg'),
+              icon: AppSvgIcons.googleLabel,
             ),
             IconButton(
               onPressed: () {},
-              icon: SvgPicture.asset('assets/svg/apple_label.svg'),
+              icon: AppSvgIcons.appleLabel,
             ),
           ],
         ),
@@ -155,7 +156,10 @@ class _LoginFieldsState extends State<LoginFields> {
 
     if (email == 'foo' && password == 'foo') {
       errorText = null;
-      print('open app');
+      Navigator.of(context).pushNamedAndRemoveUntil(
+        '/main_view',
+        (route) => false,
+      );
     } else {
       errorText = 'Wrong credentials';
     }
@@ -185,7 +189,10 @@ class _LoginFieldsState extends State<LoginFields> {
         ],
         TextField(
           controller: _email,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: AppColors.mainDarkBlue,
+          ),
           enableSuggestions: false,
           autocorrect: false,
           keyboardType: TextInputType.emailAddress,
@@ -196,7 +203,7 @@ class _LoginFieldsState extends State<LoginFields> {
             contentPadding: EdgeInsets.all(1.5.h),
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
-                color: Color.fromRGBO(29, 42, 87, 1),
+                color: AppColors.mainDarkBlue,
               ),
             ),
           ),
@@ -204,7 +211,10 @@ class _LoginFieldsState extends State<LoginFields> {
         SizedBox(height: 2.h),
         TextField(
           controller: _password,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: AppColors.mainDarkBlue,
+          ),
           obscureText: true,
           enableSuggestions: false,
           autocorrect: false,
@@ -214,7 +224,7 @@ class _LoginFieldsState extends State<LoginFields> {
             contentPadding: EdgeInsets.all(1.5.h),
             focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(
-                color: Color.fromRGBO(29, 42, 87, 1),
+                color: AppColors.mainDarkBlue,
               ),
             ),
           ),
@@ -225,7 +235,7 @@ class _LoginFieldsState extends State<LoginFields> {
             'Forgot password?',
             style: TextStyle(
               fontWeight: FontWeight.w300,
-              color: Color.fromRGBO(29, 42, 87, 1),
+              color: AppColors.mainDarkBlue,
             ),
           ),
         ),
@@ -236,8 +246,8 @@ class _LoginFieldsState extends State<LoginFields> {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
             colors: [
-              Color.fromRGBO(29, 42, 87, 1),
-              Color.fromRGBO(29, 42, 87, 1),
+              AppColors.mainDarkBlue,
+              AppColors.mainDarkBlue,
             ],
           ),
           child: const Text('Log in'),
