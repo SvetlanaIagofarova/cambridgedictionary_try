@@ -1,5 +1,5 @@
-import 'package:cambridgedictionary_try/theme/app_colors.dart';
-import 'package:cambridgedictionary_try/views/login_view.dart';
+import 'package:cambridgedictionary_try/const/app_colors.dart';
+import 'package:cambridgedictionary_try/views/auth/login_view.dart';
 import 'package:cambridgedictionary_try/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';

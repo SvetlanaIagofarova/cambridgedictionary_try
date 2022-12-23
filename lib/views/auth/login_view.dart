@@ -1,6 +1,6 @@
 import 'package:cambridgedictionary_try/const/svg.dart';
-import 'package:cambridgedictionary_try/theme/app_buttons_style.dart';
-import 'package:cambridgedictionary_try/theme/app_colors.dart';
+import 'package:cambridgedictionary_try/elements/buttons/app_buttons_style.dart';
+import 'package:cambridgedictionary_try/const/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -30,7 +30,7 @@ class _LoginViewState extends State<LoginView> {
               child: Column(
                 children: [
                   const HeaderWidget(),
-                  SizedBox(height: 13.5.h),
+                  SizedBox(height: 12.5.h),
                   const SocialNetworkAuth(),
                   const LoginFields(),
                 ],
@@ -51,8 +51,8 @@ class HeaderWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
+          padding: EdgeInsets.symmetric(
+            horizontal: 3.0.h,
           ),
           child: Text(
             'Create your own space in the Cambridge dictionary',
