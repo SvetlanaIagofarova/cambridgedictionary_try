@@ -1,8 +1,8 @@
 import 'package:cambridgedictionary_try/theme/app_colors.dart';
-import 'package:cambridgedictionary_try/theme/elements/appBar_title/grammar_title.dart';
-import 'package:cambridgedictionary_try/theme/elements/appBar_title/search_title.dart';
-import 'package:cambridgedictionary_try/theme/elements/appBar_title/thesaurus_title.dart';
-import 'package:cambridgedictionary_try/views/dictionary/word_search_screen.dart';
+import 'package:cambridgedictionary_try/theme/elements/appBar_titles/grammar_title.dart';
+import 'package:cambridgedictionary_try/theme/elements/appBar_titles/search_title.dart';
+import 'package:cambridgedictionary_try/theme/elements/appBar_titles/thesaurus_title.dart';
+import 'package:cambridgedictionary_try/views/dictionary/dictionary_drawer_widget.dart';
 import 'package:cambridgedictionary_try/views/dictionary/words_list.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -17,6 +17,7 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   int _selectedTab = 0;
   Widget _title = const SearchTitle();
+  Widget? _drawer = DictionaryDrawerWidget();
 
   void onSelectTab(int index) {
     if (_selectedTab == index) return;
@@ -25,12 +26,15 @@ class _MainViewState extends State<MainView> {
       switch (index) {
         case 0:
           _title = const SearchTitle();
+          _drawer = DictionaryDrawerWidget();
           break;
         case 1:
           _title = const ThesaurusTitle();
+          _drawer = null;
           break;
         case 2:
           _title = const GrammarTitle();
+          _drawer = null;
           break;
       }
     });
@@ -40,15 +44,12 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // GestureDetector(
-        //   onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-        //   child:
-        Scaffold(
+    return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
         title: _title,
       ),
+      drawer: _drawer,
       backgroundColor: AppColors.mainAmber,
       body: IndexedStack(
         index: _selectedTab,
@@ -82,6 +83,5 @@ class _MainViewState extends State<MainView> {
         onTap: onSelectTab,
       ),
     );
-    // );
   }
 }

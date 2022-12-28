@@ -12,24 +12,12 @@ class SearchTitle extends StatefulWidget {
 }
 
 class _SearchTitleState extends State<SearchTitle> {
-  bool _isPressedMenu = false;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-          icon: Icon(
-            Icons.menu,
-            color: _isPressedMenu ? AppColors.mainAmber : Colors.white,
-          ),
-          onPressed: () {
-            setState(() {
-              _isPressedMenu = !_isPressedMenu;
-            });
-          },
-        ),
         GestureDetector(
           onTap: () => showSearch(
             context: context,
