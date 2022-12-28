@@ -1,5 +1,8 @@
-import 'package:cambridgedictionary_try/const/app_colors.dart';
-import 'package:cambridgedictionary_try/elements/search_textfield.dart';
+import 'package:cambridgedictionary_try/theme/app_colors.dart';
+import 'package:cambridgedictionary_try/theme/elements/appBar_title/grammar_title.dart';
+import 'package:cambridgedictionary_try/theme/elements/appBar_title/search_title.dart';
+import 'package:cambridgedictionary_try/theme/elements/appBar_title/thesaurus_title.dart';
+import 'package:cambridgedictionary_try/views/dictionary/word_search_screen.dart';
 import 'package:cambridgedictionary_try/views/dictionary/words_list.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -13,7 +16,7 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   int _selectedTab = 0;
-  Widget _title = const SearchTextField();
+  Widget _title = const SearchTitle();
 
   void onSelectTab(int index) {
     if (_selectedTab == index) return;
@@ -21,13 +24,13 @@ class _MainViewState extends State<MainView> {
       _selectedTab = index;
       switch (index) {
         case 0:
-          _title = const SearchTextField();
+          _title = const SearchTitle();
           break;
         case 1:
-          _title = const Text('Thesaurus');
+          _title = const ThesaurusTitle();
           break;
         case 2:
-          _title = const Text('Grammar');
+          _title = const GrammarTitle();
           break;
       }
     });
@@ -37,47 +40,48 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          title: _title,
-        ),
-        backgroundColor: AppColors.mainAmber,
-        body: IndexedStack(
-          index: _selectedTab,
-          children: const [
-            CashedWordsList(),
-            Text(
-              'Thesaurus',
-            ),
-            Text(
-              'Grammar',
-            ),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedTab,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Dictionary',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu_book_outlined),
-              label: 'Thesaurus',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.rule),
-              label: 'Grammar',
-            ),
-            // BottomNavigationBarItem(
-          ],
-          onTap: onSelectTab,
-          
-        ),
+    return
+        // GestureDetector(
+        //   onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        //   child:
+        Scaffold(
+      key: _scaffoldKey,
+      appBar: AppBar(
+        title: _title,
+      ),
+      backgroundColor: AppColors.mainAmber,
+      body: IndexedStack(
+        index: _selectedTab,
+        children: const [
+          CashedWordsList(),
+          Text(
+            'Thesaurus',
+          ),
+          Text(
+            'Grammar',
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedTab,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Dictionary',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu_book_outlined),
+            label: 'Thesaurus',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.rule),
+            label: 'Grammar',
+          ),
+          // BottomNavigationBarItem(
+        ],
+        onTap: onSelectTab,
       ),
     );
+    // );
   }
 }

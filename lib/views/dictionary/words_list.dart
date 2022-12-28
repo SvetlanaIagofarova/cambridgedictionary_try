@@ -1,5 +1,5 @@
-import 'package:cambridgedictionary_try/const/app_colors.dart';
-import 'package:cambridgedictionary_try/elements/buttons/pronounced_button.dart';
+import 'package:cambridgedictionary_try/theme/app_colors.dart';
+import 'package:cambridgedictionary_try/theme/elements/buttons/pronounced_button.dart';
 import 'package:cambridgedictionary_try/example_of_words.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -87,7 +87,7 @@ Widget _getWord(BuildContext ctx, Word word) {
             Row(
               children: [
                 Text(
-                  word.word,
+                  word.wordName,
                   style: const TextStyle(fontWeight: FontWeight.w500),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

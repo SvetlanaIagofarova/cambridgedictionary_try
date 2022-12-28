@@ -1,6 +1,6 @@
 import 'package:cambridgedictionary_try/const/svg.dart';
-import 'package:cambridgedictionary_try/elements/buttons/app_buttons_style.dart';
-import 'package:cambridgedictionary_try/const/app_colors.dart';
+import 'package:cambridgedictionary_try/theme/elements/buttons/common_buttons.dart.dart';
+import 'package:cambridgedictionary_try/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
