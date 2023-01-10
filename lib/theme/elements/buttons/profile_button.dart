@@ -1,5 +1,4 @@
 import 'package:cambridgedictionary_try/enums/profile_menu_actions.dart';
-import 'package:cambridgedictionary_try/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 

@@ -1,4 +1,3 @@
-import 'package:cambridgedictionary_try/theme/app_colors.dart';
 import 'package:cambridgedictionary_try/theme/elements/buttons/profile_button.dart';
 import 'package:cambridgedictionary_try/views/dictionary/word_search_screen.dart';
 import 'package:flutter/material.dart';
