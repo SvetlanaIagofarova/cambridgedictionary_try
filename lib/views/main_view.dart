@@ -2,7 +2,7 @@ import 'package:cambridgedictionary_try/theme/app_colors.dart';
 import 'package:cambridgedictionary_try/theme/elements/appBar_titles/grammar_title.dart';
 import 'package:cambridgedictionary_try/theme/elements/appBar_titles/search_title.dart';
 import 'package:cambridgedictionary_try/theme/elements/appBar_titles/thesaurus_title.dart';
-import 'package:cambridgedictionary_try/views/dictionary/drawer/main_drawer_widget.dart';
+import 'package:cambridgedictionary_try/views/drawer/main_drawer_widget.dart';
 import 'package:cambridgedictionary_try/views/dictionary/words_list.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
